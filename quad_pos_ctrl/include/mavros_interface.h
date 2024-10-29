@@ -65,7 +65,7 @@ public:
     {
         _state.header = state_data.header.stamp;
         _state.has_armed = state_data.armed;
-        if (state_data.mode == "OFFBOARD")
+        if (state_data.mode == "GUIDED")
         {
             _state.offboard_enabled = true;
         }
@@ -109,15 +109,15 @@ public:
             }
             else
             {
-                ROS_INFO("not in OFFBOARD mode");
+                ROS_INFO("not in GUIDED mode");
                 mavros_msgs::SetMode set_mode_srv;
                 set_mode_srv.request.base_mode = 0;
-                set_mode_srv.request.custom_mode = "OFFBOARD";
+                set_mode_srv.request.custom_mode = "GUIDED";
                 if (!set_mode_client.call(set_mode_srv))
                 {
                     return false;
                 }
-                ROS_INFO("switch to OFFBOARD mode");
+                ROS_INFO("switch to GUIDED mode");
                 _ofb_check_rate.sleep();
             }
         }

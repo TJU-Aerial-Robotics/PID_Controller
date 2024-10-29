@@ -7,11 +7,11 @@
 <!-- Bool value: must true or false, not 1 or 0 -->
 <param name="/use_logger" value= "true" />
 <param name="/frequency" value= "50" />     
-<param name="/use_distance_sensor" value= "false" />
+<param name="/use_distance_sensor" value= "true" />
 
 <node pkg="quad_pos_ctrl" type="quad_pos_ctrl_node" name="$(arg group_name)" clear_params="true" output="screen">
     <param name="/uav_id" value= "$(arg uav_ctrl_id)" />
-    <param name="/PID/hover_thrust" value= "0.4"/>
+    <param name="/PID/hover_thrust" value= "0.5"/>
     <param name="/PID/single_state_ctrl_param/P_i/x" value= "0.15"/>
     <param name="/PID/single_state_ctrl_param/P_i/y" value= "0.15"/>
     <param name="/PID/single_state_ctrl_param/P_i/z" value= "0.4"/>
