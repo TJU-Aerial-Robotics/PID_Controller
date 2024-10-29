@@ -1,0 +1,6 @@
+float32 x_ned
+float32 y_ned
+float32 z_ned
+float32 yaw
+---
+bool res

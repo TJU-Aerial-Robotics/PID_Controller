@@ -1,0 +1,52 @@
+<launch>
+<arg name="uav_ctrl_id" default="1" />
+<arg name="group_name" default="uav$(arg uav_ctrl_id)_pos_ctrl_node" />
+<param name="/controller_logger_file_name" value = "$(find quad_pos_ctrl)/src/logger/" />
+<param name="/PID_logger_file_name" value = "$(find quad_pos_ctrl)/src/logger/" />
+
+<!-- Bool value: must true or false, not 1 or 0 -->
+<param name="/use_logger" value= "true" />
+<param name="/frequency" value= "50" />     
+<param name="/use_distance_sensor" value= "false" />
+
+<node pkg="quad_pos_ctrl" type="quad_pos_ctrl_node" name="$(arg group_name)" clear_params="true" output="screen">
+    <param name="/uav_id" value= "$(arg uav_ctrl_id)" />
+    <param name="/PID/hover_thrust" value= "0.4"/>
+    <param name="/PID/single_state_ctrl_param/P_i/x" value= "0.15"/>
+    <param name="/PID/single_state_ctrl_param/P_i/y" value= "0.15"/>
+    <param name="/PID/single_state_ctrl_param/P_i/z" value= "0.4"/>
+
+    <param name="/PID/single_state_ctrl_param/P_p/x" value= "1.6"/>
+    <param name="/PID/single_state_ctrl_param/P_p/y" value= "1.6"/>
+    <param name="/PID/single_state_ctrl_param/P_p/z" value= "2.2"/>
+
+    <param name="/PID/single_state_ctrl_param/V_p/x" value= "1.3"/>
+    <param name="/PID/single_state_ctrl_param/V_p/y" value= "1.3"/>
+    <param name="/PID/single_state_ctrl_param/V_p/z" value= "2.0"/>
+
+    <param name="/PID/single_state_ctrl_param/V_d/x" value= "0.0"/>
+    <param name="/PID/single_state_ctrl_param/V_d/y" value= "0.0"/>
+    <param name="/PID/single_state_ctrl_param/V_d/z" value= "0.0"/>
+
+    <param name="/PID/all_state_ctrl_param/P_i/x" value= "0.1"/>
+    <param name="/PID/all_state_ctrl_param/P_i/y" value= "0.1"/>
+    <param name="/PID/all_state_ctrl_param/P_i/z" value= "0.2"/>
+
+    <param name="/PID/all_state_ctrl_param/P_p/x" value= "2.0"/>
+    <param name="/PID/all_state_ctrl_param/P_p/y" value= "2.0"/>
+    <param name="/PID/all_state_ctrl_param/P_p/z" value= "2.0"/>
+
+    <param name="/PID/all_state_ctrl_param/V_p/x" value= "1.8"/>
+    <param name="/PID/all_state_ctrl_param/V_p/y" value= "1.8"/>
+    <param name="/PID/all_state_ctrl_param/V_p/z" value= "2.7"/>
+
+    <param name="/PID/all_state_ctrl_param/V_d/x" value= "0.0"/>
+    <param name="/PID/all_state_ctrl_param/V_d/y" value= "0.0"/>
+    <param name="/PID/all_state_ctrl_param/V_d/z" value= "0.0"/>
+
+    <param name="/PID/ctrl_limit/vel_xy_limit" value= "2.01"/>
+    <param name="/PID/ctrl_limit/vel_z_limit" value= "2.01"/>
+    <param name="/PID/ctrl_limit/acc_xy_limit" value= "5.01"/>
+    <param name="/PID/ctrl_limit/acc_z_limit" value= "5.01"/>
+</node>
+</launch>

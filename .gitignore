@@ -1,0 +1,3 @@
+quad_pos_ctrl/src/logger/*csv
+quad_pos_ctrl/src/logger/UAV_*/*csv
+.vscode/
